@@ -125,7 +125,7 @@ then
     AS_ECHO(["disabling compilation for genera"])
 else	
     AS_ECHO(["enabling compilation for genera"])
-    CPPFLAGS+=" -DGENERA -DAUTOSTART"
+    CPPFLAGS="$CPPFLAGS -DGENERA -DAUTOSTART"
 fi
 
 AC_ARG_ENABLE([debug-disk],
@@ -137,7 +137,7 @@ if test ! -z $enable_debug_disk &&
     test "x$enable_debug_disk" = "xyes"
 then
     AS_ECHO("enabling disk debugging")
-    CPPFLAGS+=" -DDEBUG_DISK"
+    CPPFLAGS="$CPPFLAGS -DDEBUG_DISK"
 else
     AS_ECHO("disabling disk debugging")
 fi
@@ -151,7 +151,7 @@ if ! test -z $enable_debug_network &&
     test "x$enable_debug_network" = "xyes"
 then
     AS_ECHO(["enabling network debugging"])
-    CPPFLAGS+=" -DDEBUG_NETWORK=1"
+    CPPFLAGS="$CPPFLAGS -DDEBUG_NETWORK=1"
 else	
     AS_ECHO(["disabling network debugging"])
 fi
@@ -168,7 +168,7 @@ then
 	test "x$enable_debug_network_ip" = "xyes"
     then
 	AS_ECHO(["enabling IP network debugging"])
-	CPPFLAGS+=" -DDEBUG_IP=1"
+	CPPFLAGS="$CPPFLAGS -DDEBUG_IP=1"
     else	
 	AS_ECHO(["disabling IP network debugging"])
     fi
@@ -192,7 +192,7 @@ then
 	test "x$enable_debug_network_chaos" = "xyes"
     then
 	AS_ECHO(["enabling CHAOS network debugging"])
-	CPPFLAGS+=" -DDEBUG_CHAOS=1"
+	CPPFLAGS="$CPPFLAGS -DDEBUG_CHAOS=1"
     else	
 	AS_ECHO(["disabling CHAOS network debugging"])
     fi
@@ -216,7 +216,7 @@ then
 	test "x$enable_debug_network_arp" = "xyes"
     then
 	AS_ECHO(["enabling ARP network debugging"])
-	CPPFLAGS+=" -DDEBUG_ARP=1"
+	CPPFLAGS="$CPPFLAGS -DDEBUG_ARP=1"
     else	
 	AS_ECHO(["disabling ARP network debugging"])
     fi
@@ -241,7 +241,7 @@ then
     then
 	AC_MSG_WARN([enabling IP network debugging to enable ICMP debugging])
 	AS_ECHO(["enabling ICMP network debugging"])
-	CPPFLAGS+=" -DDEBUG_IP -DDEBUG_ICMP=1"
+	CPPFLAGS="$CPPFLAGS -DDEBUG_IP -DDEBUG_ICMP=1"
     else	
 	AS_ECHO(["disabling ICMP network debugging"])
     fi
@@ -260,10 +260,10 @@ AC_ARG_WITH(tap,
 if test ! -z $with_tap && test "x$with_tap" = "xyes"
 then
     AS_ECHO(["using tap network interface"])
-    CPPFLAGS+=" -DUSE_TAP"
+    CPPFLAGS="$CPPFLAGS -DUSE_TAP"
 else
     AS_ECHO(["using tun network interface"])
-    CPPFLAGS+=" -DUSE_TUN"
+    CPPFLAGS="$CPPFLAGS -DUSE_TUN"
 fi
 
 AC_CONFIG_FILES([Makefile
